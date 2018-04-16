@@ -127,5 +127,15 @@ int scoreFor(int player, struct gameState *state);
 int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
+   
+int refactorSmithy(int card, struct gameState *state, int handPos);
+
+int refactorAdventurer(int card, struct gameState *state, int handPos);
+
+int refactorEmbargo(int card, int choice1, struct gameState *state, int handPos);
+
+int refactorGreatHall(int card, struct gameState *state, int handPos);
+
+int refactorVillage(int card, struct gameState *state, int handPos);
 
 #endif
