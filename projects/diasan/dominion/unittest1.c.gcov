@@ -90,8 +90,8 @@
         -:   85: /************************** estates *************************/               
         -:   86:           
         -:   87:                          
-       10:   88:                memcpy(G.hand[player], estates, sizeof(int) * handCount); // set all the cards to curse
-       10:   89:                memcpy(G.discard[player], estates, sizeof(int) * handCount); // set all the cards to curse
+       10:   88:                memcpy(G.hand[player], estates, sizeof(int) * handCount); // set all the cards to estates
+       10:   89:                memcpy(G.discard[player], estates, sizeof(int) * handCount); // set all the cards to estates
        10:   90:                score = scoreFor(player, &G);
         -:   91:#if (NOISY_TEST == 1)
        10:   92:                printf("estates score = %d, expected = %d\n", score, handCount * 1);
@@ -100,8 +100,8 @@
         -:   95:                
         -:   96: /************************** duchys *************************/               
         -:   97:   
-       10:   98:                memcpy(G.hand[player], duchys, sizeof(int) * handCount); // set all the cards to curse
-       10:   99:                memcpy(G.discard[player], duchys, sizeof(int) * handCount); // set all the cards to curse
+       10:   98:                memcpy(G.hand[player], duchys, sizeof(int) * handCount); // set all the cards to duchys
+       10:   99:                memcpy(G.discard[player], duchys, sizeof(int) * handCount); // set all the cards to duchys
        10:  100:                score = scoreFor(player, &G);
         -:  101:#if (NOISY_TEST == 1)
        10:  102:                printf("duchys score = %d, expected = %d\n", score, handCount * 3);
@@ -111,8 +111,8 @@
         -:  106:/************************** provinces *************************/               
         -:  107:
         -:  108:                
-       10:  109:                memcpy(G.hand[player], provinces, sizeof(int) * handCount); // set all the cards to curse
-       10:  110:                memcpy(G.discard[player], provinces, sizeof(int) * handCount); // set all the cards to curse
+       10:  109:                memcpy(G.hand[player], provinces, sizeof(int) * handCount); // set all the cards to provinces
+       10:  110:                memcpy(G.discard[player], provinces, sizeof(int) * handCount); // set all the cards to provinces
        10:  111:                score = scoreFor(player, &G);
         -:  112:#if (NOISY_TEST == 1)
        10:  113:                printf("provinces score = %d, expected = %d\n", score, handCount * 6);
@@ -122,8 +122,8 @@
         -:  117:/************************** great halls *************************/               
         -:  118:
         -:  119:                
-       10:  120:                memcpy(G.hand[player], great_halls, sizeof(int) * handCount); // set all the cards to curse
-       10:  121:                memcpy(G.discard[player], great_halls, sizeof(int) * handCount); // set all the cards to curse
+       10:  120:                memcpy(G.hand[player], great_halls, sizeof(int) * handCount); // set all the cards to great halls
+       10:  121:                memcpy(G.discard[player], great_halls, sizeof(int) * handCount); // set all the cards to great halls
        10:  122:                score = scoreFor(player, &G);
         -:  123:#if (NOISY_TEST == 1)
        10:  124:                printf("great halls score = %d, expected = %d\n", score, handCount * 1);

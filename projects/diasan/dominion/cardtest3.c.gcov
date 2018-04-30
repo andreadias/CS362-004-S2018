@@ -62,46 +62,47 @@
         -:   57:	
         1:   58:	printf("Number of Actions = %d, Expected = %d\n", teststate->numActions - 2, state->numActions + plusTwo);
         1:   59:	myAssert(teststate->numActions - 2, state->numActions + plusTwo);
-        1:   60:	printf("Discarded Cards = %d, Expected = %d\n", teststate->discardCount[currentPlayer] - plusOne, state->discardCount[currentPlayer] + plusOne);
-        1:   61:	myAssert(teststate->discardCount[currentPlayer] - plusOne, state->discardCount[currentPlayer] + plusOne);
-        -:   62:
+        -:   60:	
+        1:   61:	printf("Discarded Cards = %d, Expected = %d\n", teststate->discardCount[currentPlayer] - plusOne, state->discardCount[currentPlayer] + plusOne);
+        1:   62:	myAssert(teststate->discardCount[currentPlayer] - plusOne, state->discardCount[currentPlayer] + plusOne);
         -:   63:
-        1:   64:  	printf("---------------------- Testing Cards in Play ---------------------- \n");
-        1:   65:    printf("# of Estate Cards = %d, Expected = %d\n", teststate->supplyCount[estate], state->supplyCount[estate]);
-        1:   66:    myAssert(teststate->supplyCount[estate], state->supplyCount[estate]);
-        1:   67: 	printf("# of Duchy Cards = %d, Expected = %d\n", teststate->supplyCount[duchy], state->supplyCount[duchy]);
-        1:   68: 	myAssert(teststate->supplyCount[duchy], state->supplyCount[duchy]);
-        1:   69:  	printf("# of Province Cards = %d, Expected = %d\n", teststate->supplyCount[province], state->supplyCount[province]);
-        1:   70:  	myAssert(teststate->supplyCount[province], state->supplyCount[province]);
-        1:   71:  	printf("# of Copper Cards = %d, Expected = %d\n", teststate->supplyCount[copper], state->supplyCount[copper]);
-        1:   72:  	myAssert(teststate->supplyCount[copper], state->supplyCount[copper]);
-        1:   73:  	printf("# of Silver Cards = %d, Expected = %d\n", teststate->supplyCount[silver], state->supplyCount[silver]);
-        1:   74:  	myAssert(teststate->supplyCount[silver], state->supplyCount[silver]);
-        1:   75:  	printf("# of Gold Cards = %d, Expected = %d\n", teststate->supplyCount[gold], state->supplyCount[gold]);   
-        1:   76:  	myAssert(teststate->supplyCount[gold], state->supplyCount[gold]); 
-        -:   77:
-        -:   78:    
-        1:   79:    return 0;
-        -:   80:
-        -:   81:}
-        -:   82:
-        -:   83:/****
-        -:   84:
-        -:   85:REFACTORED CODE:
-        -:   86:
-        -:   87:int refactorVillage(int card, struct gameState *state, int handPos) {
-        -:   88:
-        -:   89:	  int currentPlayer = whoseTurn(state);
-        -:   90:
-        -:   91:      //+1 Card 
-        -:   92:      drawCard(currentPlayer, state);
-        -:   93:			
-        -:   94:      //+2 Actions
-        -:   95:      state->numActions = state->numActions + 2;
-        -:   96:			
-        -:   97:      //discard played card from hand (refactor: don't discard the card)
-        -:   98:      //discardCard(handPos, currentPlayer, state, 0);
-        -:   99:      
-        -:  100:      return 0;
-        -:  101:
-        -:  102:***/
+        -:   64:
+        1:   65:  	printf("---------------------- Testing Cards in Play ---------------------- \n");
+        1:   66:    printf("# of Estate Cards = %d, Expected = %d\n", teststate->supplyCount[estate], state->supplyCount[estate]);
+        1:   67:    myAssert(teststate->supplyCount[estate], state->supplyCount[estate]);
+        1:   68: 	printf("# of Duchy Cards = %d, Expected = %d\n", teststate->supplyCount[duchy], state->supplyCount[duchy]);
+        1:   69: 	myAssert(teststate->supplyCount[duchy], state->supplyCount[duchy]);
+        1:   70:  	printf("# of Province Cards = %d, Expected = %d\n", teststate->supplyCount[province], state->supplyCount[province]);
+        1:   71:  	myAssert(teststate->supplyCount[province], state->supplyCount[province]);
+        1:   72:  	printf("# of Copper Cards = %d, Expected = %d\n", teststate->supplyCount[copper], state->supplyCount[copper]);
+        1:   73:  	myAssert(teststate->supplyCount[copper], state->supplyCount[copper]);
+        1:   74:  	printf("# of Silver Cards = %d, Expected = %d\n", teststate->supplyCount[silver], state->supplyCount[silver]);
+        1:   75:  	myAssert(teststate->supplyCount[silver], state->supplyCount[silver]);
+        1:   76:  	printf("# of Gold Cards = %d, Expected = %d\n", teststate->supplyCount[gold], state->supplyCount[gold]);   
+        1:   77:  	myAssert(teststate->supplyCount[gold], state->supplyCount[gold]); 
+        -:   78:
+        -:   79:    
+        1:   80:    return 0;
+        -:   81:
+        -:   82:}
+        -:   83:
+        -:   84:/****
+        -:   85:
+        -:   86:REFACTORED CODE:
+        -:   87:
+        -:   88:int refactorVillage(int card, struct gameState *state, int handPos) {
+        -:   89:
+        -:   90:	  int currentPlayer = whoseTurn(state);
+        -:   91:
+        -:   92:      //+1 Card 
+        -:   93:      drawCard(currentPlayer, state);
+        -:   94:			
+        -:   95:      //+2 Actions
+        -:   96:      state->numActions = state->numActions + 2;
+        -:   97:			
+        -:   98:      //discard played card from hand (refactor: don't discard the card)
+        -:   99:      //discardCard(handPos, currentPlayer, state, 0);
+        -:  100:      
+        -:  101:      return 0;
+        -:  102:
+        -:  103:***/

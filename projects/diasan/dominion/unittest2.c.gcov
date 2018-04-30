@@ -49,28 +49,28 @@
         1:   44:	testPlayerNum = whoseTurn(teststate);
         1:   45:	playerNum = whoseTurn(state);
         1:   46:	printf("Whose turn is it? Player: %d\n", playerNum);
-        1:   47:	myAssert(playerNum, testPlayerNum);
+        1:   47:	myAssert(playerNum, testPlayerNum); //check if correct player is up
         -:   48:	
         1:   49:	printf("End of Player %d turn, Who is Next?\n", playerNum);
-        1:   50:	endTurn(teststate);
+        1:   50:	endTurn(teststate); //end of players turn, should go to next player
         1:   51:	testPlayerNum = whoseTurn(teststate);
         1:   52:	playerNum = whoseTurn(teststate);
         1:   53:	printf("Player: %d\n", playerNum);
-        1:   54:	myAssert(playerNum, testPlayerNum);
+        1:   54:	myAssert(playerNum, testPlayerNum); //check if correct player is up
         -:   55:	
         1:   56:	printf("End of Player %d turn, Who is Next?\n", playerNum);
-        1:   57:	endTurn(teststate);
+        1:   57:	endTurn(teststate); //end of players turn, should go to next player
         1:   58:	testPlayerNum = whoseTurn(teststate);
         1:   59:	playerNum = whoseTurn(teststate);
         1:   60:	printf("Player: %d\n", playerNum);
-        1:   61:	myAssert(playerNum, testPlayerNum);
+        1:   61:	myAssert(playerNum, testPlayerNum); //check if correct player is up
         -:   62:	
         1:   63:	printf("End of Player %d turn, Who is Next?\n", playerNum);
-        1:   64:	endTurn(teststate);
+        1:   64:	endTurn(teststate); //end of players turn, should go to next player
         1:   65:	testPlayerNum = whoseTurn(teststate);
         1:   66:	playerNum = whoseTurn(teststate);
         1:   67:	printf("Player: %d\n", playerNum);
-        1:   68:	myAssert(playerNum, testPlayerNum);
+        1:   68:	myAssert(playerNum, testPlayerNum); //check if correct player is ups
         -:   69:
         -:   70:
         1:   71:    return 0;
