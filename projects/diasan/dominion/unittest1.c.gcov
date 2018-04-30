@@ -1,0 +1,140 @@
+        -:    0:Source:unittest1.c
+        -:    0:Graph:unittest1.gcno
+        -:    0:Data:unittest1.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* -----------------------------------------------------------------------
+        -:    2: * Used the testUpdateCoins.c file as a template for this code, as stated 
+        -:    3: * as being allowed in the Assignment 3 Assistance (2) page on Canvas
+        -:    4: * -----------------------------------------------------------------------
+        -:    5: */
+        -:    6: 
+        -:    7: // Andrea Dias
+        -:    8:// 4/29/18
+        -:    9:// CS 362-400 Spring 2018
+        -:   10:
+        -:   11:
+        -:   12:
+        -:   13:#include "dominion.h"
+        -:   14:#include "dominion_helpers.h"
+        -:   15:#include <string.h>
+        -:   16:#include <stdio.h>
+        -:   17:#include <assert.h>
+        -:   18:#include "rngs.h"
+        -:   19:
+        -:   20:// set NOISY_TEST to 0 to remove printfs from output
+        -:   21:#define NOISY_TEST 1
+        -:   22:
+       50:   23:void myAssert(int a, int b){
+       50:   24:	if (a != b) {
+    #####:   25:		printf("***Test fails! You did not get the intended result***\n");
+        -:   26:	}
+        -:   27:
+       50:   28:}
+        -:   29:
+        1:   30:int main() {
+        -:   31:    int i;
+        1:   32:    int numPlayer = 2;
+        -:   33:    int player, handCount;
+        1:   34:    int k[10] = {adventurer, council_room, feast, gardens, mine
+        -:   35:               , remodel, smithy, village, baron, great_hall};
+        -:   36:    struct gameState G;
+        -:   37:    /*
+        -:   38:    struct gameState *state, *teststate;
+        -:   39:    struct gameState myGame, myTestGame;
+        -:   40:    state = &myGame;
+        -:   41:    teststate = &myTestGame;
+        -:   42:    */
+        1:   43:    int count = 5;
+        -:   44:    // arrays of all curses, estates, duchys, provinces, great halls
+        1:   45:    int curses[count];
+        1:   46:    int estates[count];
+        1:   47:    int duchys[count];
+        1:   48:    int provinces[count];
+        1:   49:    int great_halls[count];
+        1:   50:    int score = -1;
+        6:   51:    for (i = 0; i < count; i++)
+        -:   52:    {
+        5:   53:        curses[i] = curse;
+        5:   54:        estates[i] = estate;
+        5:   55:        duchys[i] = duchy;
+        5:   56:        provinces[i] = province;
+        5:   57:        great_halls[i] = great_hall;
+        -:   58:    }
+        -:   59:
+        1:   60:    printf ("TESTING scoreFor():\n");
+        3:   61:    for (player = 0; player < numPlayer; player++)
+        -:   62:    {
+       12:   63:        for (handCount = 1; handCount <= count; handCount++)
+        -:   64:        {
+        -:   65:
+        -:   66: /************************** curses *************************/      
+        -:   67:
+        -:   68:#if (NOISY_TEST == 1)
+       10:   69:				printf("\n");
+       10:   70:                printf("Test player %d with %d victory cards.\n", player, handCount);
+        -:   71:#endif
+       10:   72:                initializeGame(numPlayer, k, 100, &G); // initialize a new game
+       10:   73:                G.handCount[player] = handCount;                 // set the number of cards on hand
+        -:   74:
+        -:   75:                
+       10:   76:                memcpy(G.hand[player], curses, sizeof(int) * handCount); // set all the cards to curse
+        -:   77:
+       10:   78:                score = scoreFor(player, &G);
+        -:   79:#if (NOISY_TEST == 1)
+       10:   80:                printf("curse score = %d, expected = %d\n", score, handCount * -1);
+        -:   81:#endif
+       10:   82:                myAssert(score, handCount * -1); // check if the score is correct
+        -:   83:                
+        -:   84:
+        -:   85: /************************** estates *************************/               
+        -:   86:           
+        -:   87:                          
+       10:   88:                memcpy(G.hand[player], estates, sizeof(int) * handCount); // set all the cards to curse
+       10:   89:                memcpy(G.discard[player], estates, sizeof(int) * handCount); // set all the cards to curse
+       10:   90:                score = scoreFor(player, &G);
+        -:   91:#if (NOISY_TEST == 1)
+       10:   92:                printf("estates score = %d, expected = %d\n", score, handCount * 1);
+        -:   93:#endif
+       10:   94:                myAssert(score, handCount * 1); // check if the score is correct
+        -:   95:                
+        -:   96: /************************** duchys *************************/               
+        -:   97:   
+       10:   98:                memcpy(G.hand[player], duchys, sizeof(int) * handCount); // set all the cards to curse
+       10:   99:                memcpy(G.discard[player], duchys, sizeof(int) * handCount); // set all the cards to curse
+       10:  100:                score = scoreFor(player, &G);
+        -:  101:#if (NOISY_TEST == 1)
+       10:  102:                printf("duchys score = %d, expected = %d\n", score, handCount * 3);
+        -:  103:#endif
+       10:  104:                myAssert(score, handCount * 3); // check if the score is correct
+        -:  105:   
+        -:  106:/************************** provinces *************************/               
+        -:  107:
+        -:  108:                
+       10:  109:                memcpy(G.hand[player], provinces, sizeof(int) * handCount); // set all the cards to curse
+       10:  110:                memcpy(G.discard[player], provinces, sizeof(int) * handCount); // set all the cards to curse
+       10:  111:                score = scoreFor(player, &G);
+        -:  112:#if (NOISY_TEST == 1)
+       10:  113:                printf("provinces score = %d, expected = %d\n", score, handCount * 6);
+        -:  114:#endif
+       10:  115:                myAssert(score, handCount * 6); // check if the score is correct    
+        -:  116:                
+        -:  117:/************************** great halls *************************/               
+        -:  118:
+        -:  119:                
+       10:  120:                memcpy(G.hand[player], great_halls, sizeof(int) * handCount); // set all the cards to curse
+       10:  121:                memcpy(G.discard[player], great_halls, sizeof(int) * handCount); // set all the cards to curse
+       10:  122:                score = scoreFor(player, &G);
+        -:  123:#if (NOISY_TEST == 1)
+       10:  124:                printf("great halls score = %d, expected = %d\n", score, handCount * 1);
+        -:  125:#endif
+       10:  126:                myAssert(score, handCount * 1); // check if the score is correct              
+        -:  127:
+        -:  128: 			
+        -:  129:            
+        -:  130:        }
+        -:  131:    }
+        -:  132:
+        1:  133:    return 0;
+        -:  134:}
+        -:  135:

@@ -1,0 +1,107 @@
+        -:    0:Source:cardtest2.c
+        -:    0:Graph:cardtest2.gcno
+        -:    0:Data:cardtest2.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// cardtest2.c
+        -:    2://
+        -:    3:// Andrea Dias
+        -:    4:// 4/29/18
+        -:    5:// CS 362-400 Spring 2018
+        -:    6:// Testing Great Hall Card
+        -:    7:
+        -:    8:
+        -:    9:
+        -:   10:#include "dominion.h"
+        -:   11:#include "dominion_helpers.h"
+        -:   12:#include "rngs.h"
+        -:   13:#include <string.h>
+        -:   14:#include <stdio.h>
+        -:   15:#include <assert.h>
+        -:   16:#include <stdlib.h>
+        -:   17:
+       10:   18:void myAssert(int a, int b){
+       10:   19:	if (a != b) {
+        4:   20:		printf("***Test fails! You did not get the intended result***\n");
+        -:   21:	}
+       10:   22:}
+        -:   23:
+        1:   24:int main() {
+        -:   25:
+        1:   26:    int choice1 = 0;
+        1:   27:    int choice2 = 0;
+        1:   28:    int choice3 = 0;
+        1:   29:    int bonus = 0;
+        1:   30:    int handPos = 0;
+        -:   31:    struct gameState *state, *teststate;
+        -:   32:    
+        -:   33:    struct gameState myGame, myTestGame;
+        1:   34:    state = &myGame;
+        1:   35:    teststate = &myTestGame;
+        1:   36:    int k[10] = { adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall };
+        1:   37:    int plusTwo = 2;
+        1:   38:    int plusOne = 1;
+        -:   39:    
+        1:   40:    initializeGame(2, k, 100, state);
+        -:   41:
+        1:   42:    memcpy(teststate, state, sizeof(struct gameState));
+        -:   43:
+        1:   44:    printf("--------------------- Testing Card: GREAT HALL  ----------------------\n");
+        -:   45:
+        1:   46:    cardEffect(great_hall, choice1, choice2, choice3, teststate, handPos, &bonus);
+        -:   47:    
+        1:   48:    int currentPlayer = whoseTurn(state); 
+        -:   49:
+        -:   50:    
+        1:   51:    printf("------------ GREAT HALL: +1 Card, +1 Action, +1 Victory -----------\n");
+        1:   52:    printf("Cards in Hand = %d, Expected = %d\n", teststate->handCount[currentPlayer], state->handCount[currentPlayer] + plusOne);
+        1:   53:    myAssert(teststate->handCount[currentPlayer], state->handCount[currentPlayer] + plusOne);
+        -:   54:    
+        1:   55:    printf("Cards in Deck = %d, Expected = %d\n", teststate->deckCount[currentPlayer] + plusTwo, state->deckCount[currentPlayer] - plusOne);
+        1:   56:	myAssert(teststate->deckCount[currentPlayer] + plusTwo, state->deckCount[currentPlayer] - plusOne);
+        -:   57:	
+        1:   58:	printf("Number of Actions = %d, Expected = %d\n", teststate->numActions, state->numActions + plusOne);
+        1:   59:	myAssert(teststate->numActions, state->numActions + plusOne);
+        1:   60:	printf("Victory Points = %d, Expected = %d\n", scoreFor(currentPlayer, teststate), scoreFor(currentPlayer, state) + plusOne);
+        1:   61:	myAssert(scoreFor(currentPlayer, teststate), scoreFor(currentPlayer, state) + plusOne);
+        -:   62:
+        -:   63: 
+        1:   64:  	printf("--------------------- Testing Cards in Play --------------------- \n");
+        1:   65:    printf("# of Estate Cards = %d, Expected = %d\n", teststate->supplyCount[estate], state->supplyCount[estate]);
+        1:   66:    myAssert(teststate->supplyCount[estate], state->supplyCount[estate]);
+        1:   67: 	printf("# of Duchy Cards = %d, Expected = %d\n", teststate->supplyCount[duchy], state->supplyCount[duchy]);
+        1:   68: 	myAssert(teststate->supplyCount[duchy], state->supplyCount[duchy]);
+        1:   69:  	printf("# of Province Cards = %d, Expected = %d\n", teststate->supplyCount[province], state->supplyCount[province]);
+        1:   70:  	myAssert(teststate->supplyCount[province], state->supplyCount[province]);
+        1:   71:  	printf("# of Copper Cards = %d, Expected = %d\n", teststate->supplyCount[copper], state->supplyCount[copper]);
+        1:   72:  	myAssert(teststate->supplyCount[copper], state->supplyCount[copper]);
+        1:   73:  	printf("# of Silver Cards = %d, Expected = %d\n", teststate->supplyCount[silver], state->supplyCount[silver]);
+        1:   74:  	myAssert(teststate->supplyCount[silver], state->supplyCount[silver]);
+        1:   75:  	printf("# of Gold Cards = %d, Expected = %d\n", teststate->supplyCount[gold], state->supplyCount[gold]);   
+        1:   76:  	myAssert(teststate->supplyCount[gold], state->supplyCount[gold]); 
+        -:   77:
+        -:   78:    
+        1:   79:    return 0;
+        -:   80:
+        -:   81:}
+        -:   82:
+        -:   83:/****
+        -:   84:
+        -:   85:REFACTORED CODE:
+        -:   86:
+        -:   87:int refactorGreatHall(int card, struct gameState *state, int handPos) {
+        -:   88:
+        -:   89:	int currentPlayer = whoseTurn(state);
+        -:   90:      
+        -:   91:      //+1 Card regular.. added second drawCard statement
+        -:   92:      drawCard(currentPlayer, state);
+        -:   93:      drawCard(currentPlayer, state); //added this statement for refactor
+        -:   94:			
+        -:   95:      //+1 Actions
+        -:   96:      state->numActions++;
+        -:   97:			
+        -:   98:      //discard card from hand
+        -:   99:      discardCard(handPos, currentPlayer, state, 0);
+        -:  100:      return 0;
+        -:  101:
+        -:  102:***/

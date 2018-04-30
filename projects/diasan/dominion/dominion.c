@@ -6,6 +6,23 @@
 #include <stdlib.h>
 //Assignment 2
 
+int refactorGreatHall(int card, struct gameState *state, int handPos) {
+
+	  int currentPlayer = whoseTurn(state);
+      
+      //+1 Card regular.. added second drawCard statement
+      drawCard(currentPlayer, state);
+      drawCard(currentPlayer, state); //added this statement for refactor
+			
+      //+1 Actions
+      state->numActions = state->numActions + 1;
+			
+      //discard card from hand
+      discardCard(handPos, currentPlayer, state, 0);
+      return 0;
+
+}
+
 int refactorSmithy(int card, struct gameState *state, int handPos) {
       //+3 cards for normal, add 4 for refactor
       
@@ -19,11 +36,12 @@ int refactorSmithy(int card, struct gameState *state, int handPos) {
 			
     //discard card from hand
     discardCard(handPos, currentPlayer, state, 0);
+  
     return 0;
 }
 
 int refactorAdventurer(int card, struct gameState *state, int handPos) {
-//turned (drawntreasure<2) into (drawntreasure<2)
+//turned (drawntreasure<2) into (drawntreasure>2)
 
   int cardDrawn;
   int drawntreasure=0;
@@ -35,7 +53,7 @@ int refactorAdventurer(int card, struct gameState *state, int handPos) {
     nextPlayer = 0;
   
   
- while(drawntreasure>2){
+ while(drawntreasure<2){
 	if (state->deckCount[currentPlayer] <1){//if the deck is empty we need to shuffle discard and add to deck
 	  shuffle(currentPlayer, state);
 	}
@@ -80,29 +98,15 @@ int refactorEmbargo(int card, int choice1, struct gameState *state, int handPos)
 
 }
 
-int refactorGreatHall(int card, struct gameState *state, int handPos) {
 
-	int currentPlayer = whoseTurn(state);
-      
-      //+1 Card regular.. added second drawCard statement
-      drawCard(currentPlayer, state);
-      drawCard(currentPlayer, state); //added this statement for refactor
-			
-      //+1 Actions
-      state->numActions++;
-			
-      //discard card from hand
-      discardCard(handPos, currentPlayer, state, 0);
-      return 0;
-
-}
 
 int refactorVillage(int card, struct gameState *state, int handPos) {
 
-	int currentPlayer = whoseTurn(state);
+	  int currentPlayer = whoseTurn(state);
 
       //+1 Card 
       drawCard(currentPlayer, state);
+
 			
       //+2 Actions
       state->numActions = state->numActions + 2;
@@ -646,7 +650,7 @@ int drawCard(int player, struct gameState *state)
     state->deckCount[player] = state->discardCount[player];
     state->discardCount[player] = 0;//Reset discard
 
-    //Shufffle the deck
+    //Shuffle the deck
     shuffle(player, state);//Shuffle the deck up and make it so that we can draw
    
     if (DEBUG){//Debug statements
