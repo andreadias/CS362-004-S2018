@@ -1,0 +1,25 @@
+Result for randomtestadventurer:
+randomtestadventurer.c:
+------------------------- Testing Card: ADVENTURER  --------------------------
+Hand Count: 5, Expected: 5
+Card Drawn: DUCHY
+Card Drawn: BARON
+Card Drawn: OUTPOST
+Card Drawn: PROVINCE
+Card Drawn: PROVINCE
+Card Drawn: MINION
+Card Drawn: EMBARGO
+Card Drawn: STEWARD
+Card Drawn: MINE
+Card Drawn: FEAST
+Card Drawn: REMODEL
+Card Drawn: SILVER
+You drew a treasure card!
+Card Drawn: COPPER
+You drew a treasure card!
+Discarded Count 11, Expected: 11
+Hand Count: 7, Expected: 7
+File 'randomtestadventurer.c'
+Lines executed:100.00% of 29
+Creating 'randomtestadventurer.c.gcov'
+

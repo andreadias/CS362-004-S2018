@@ -1,0 +1,116 @@
+        -:    0:Source:randomtestadventurer.c
+        -:    0:Graph:randomtestadventurer.gcno
+        -:    0:Data:randomtestadventurer.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// randomtestadventurer.c
+        -:    2://
+        -:    3:// Andrea Dias
+        -:    4:// 5/13/18
+        -:    5:// CS 362-400 Spring 2018
+        -:    6:// Random Testing Adventurer Card
+        -:    7:
+        -:    8:
+        -:    9:#include "dominion.h"
+        -:   10:#include "dominion_helpers.h"
+        -:   11:#include "rngs.h"
+        -:   12:#include <string.h>
+        -:   13:#include <stdio.h>
+        -:   14:#include <assert.h>
+        -:   15:#include <stdlib.h>
+        -:   16:#include <time.h>
+        -:   17:#include <unistd.h>
+        -:   18:#include <stdlib.h>
+        -:   19:
+        -:   20:/*
+        -:   21:void myAssert(int a, int b){
+        -:   22:	if (a != b) {
+        -:   23:		printf("***** Test fails! You did not get the intended result *****\n");
+        -:   24:	}
+        -:   25:}
+        -:   26:*/
+        -:   27:
+function main called 1 returned 100% blocks executed 100%
+        1:   28:int main() {
+        -:   29:
+        -:   30:    struct gameState *state, *teststate;  
+        -:   31:    struct gameState myGame, myTestGame;
+        1:   32:    state = &myGame;
+        1:   33:    teststate = &myTestGame;
+        1:   34:    int k[10] = { adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall };
+        1:   35:    int numPlayers = 2;
+        1:   36:    int cardDrawn = 0;
+        1:   37:    int drawntreasure = 0;
+        -:   38:    int card;
+        1:   39:    int discard = 0;
+        1:   40:    srand(time(NULL));
+call    0 returned 100%
+call    1 returned 100%
+        -:   41:
+        -:   42:     
+        1:   43:    initializeGame(numPlayers, k, 40, state);
+call    0 returned 100%
+        1:   44:    initializeGame(numPlayers, k, 40, teststate);
+call    0 returned 100%
+        -:   45:
+        1:   46:    memcpy(teststate, state, sizeof(struct gameState));
+        1:   47:    int currentPlayer = whoseTurn(teststate); 
+call    0 returned 100%
+        -:   48:    
+        -:   49:    
+        1:   50:  	int cardArray[27] = {curse, estate, duchy, province, copper, silver, gold, adventurer, council_room, feast, gardens, mine, 
+        -:   51:   		remodel, smithy, village, baron, great_hall, minion, steward, tribute, ambassador, cutpurse, embargo, outpost, salvager,
+        -:   52:   		sea_hag, treasure_map};  
+        -:   53:    
+        1:   54:    char *nameArray[27] = {"CURSE", "ESTATE", "DUCHY", "PROVINCE", "COPPER", "SILVER", "GOLD", "ADVENTURER", "COUNCIL ROOM",
+        -:   55:			"FEAST", "GARDENS", "MINE", "REMODEL", "SMITHY", "VILLAGE", "BARON", "GREAT HALL", "MINION", "STEWARD", 
+        -:   56:			"TRIBUTE", "AMBASSADOR", "CUTPURSE", "EMBARGO", "OUTPOST", "SALVAGER", "SEA HAG", "TREASURE MAP"};
+        -:   57:    
+        -:   58:
+        1:   59:    printf("------------------------- Testing Card: ADVENTURER  --------------------------\n");
+call    0 returned 100%
+        -:   60:
+        -:   61:    
+        1:   62:    printf("Hand Count: %d, Expected: %d\n", state->handCount[currentPlayer], teststate->handCount[currentPlayer]);
+call    0 returned 100%
+        -:   63:    //myAssert(state->handCount[currentPlayer], teststate->handCount[currentPlayer]);
+        -:   64:
+       15:   65:	while(drawntreasure < 2) {
+branch  0 taken 93%
+branch  1 taken 7% (fallthrough)
+        -:   66:
+       13:   67:		card = rand() % 27;
+call    0 returned 100%
+       13:   68:		cardDrawn = cardArray[card];
+        -:   69:		
+       13:   70:		printf("Card Drawn: %s\n", nameArray[cardDrawn]);
+call    0 returned 100%
+        -:   71:	
+       13:   72:		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold) {
+branch  0 taken 92% (fallthrough)
+branch  1 taken 8%
+branch  2 taken 92% (fallthrough)
+branch  3 taken 8%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+        2:   73:			printf("You drew a treasure card!\n");
+call    0 returned 100%
+        2:   74:	 		drawntreasure++;
+        -:   75:	 		}
+        -:   76:	 	
+        -:   77:		else {
+       11:   78:			discard++;
+       11:   79:			state->discard[currentPlayer][state->discardCount[currentPlayer]]++;
+        -:   80:			}
+        -:   81:	}
+        -:   82:
+        1:   83:	printf("Discarded Count %d, Expected: %d\n", discard, state->discard[currentPlayer][state->discardCount[currentPlayer]++]);
+call    0 returned 100%
+        -:   84:	//myAssert(state->discard[currentPlayer][state->discardCount[currentPlayer]++], discard);
+        1:   85:	printf("Hand Count: %d, Expected: %d\n", state->handCount[currentPlayer] + drawntreasure, teststate->handCount[currentPlayer] + drawntreasure);
+call    0 returned 100%
+        -:   86:	//myAssert(state->handCount[currentPlayer] + drawntreasure, teststate->handCount[currentPlayer] + drawntreasure);
+        -:   87:
+        1:   88:    return 0;
+        -:   89:
+        -:   90:}

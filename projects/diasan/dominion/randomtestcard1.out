@@ -1,0 +1,13 @@
+Result for randomtestcard1:
+randomtestcard1.c:
+--------------------- Testing Card: SMITHY  ----------------------
+Cards in Hand = 8, Expected = 8
+Cards in Deck = 2, Expected = 2
+--------------------- Testing Cards in Play --------------------- 
+# of Copper Cards = 46, Expected = 46
+# of Silver Cards = 40, Expected = 40
+# of Gold Cards = 30, Expected = 30
+File 'randomtestcard1.c'
+Lines executed:92.16% of 51
+Creating 'randomtestcard1.c.gcov'
+
