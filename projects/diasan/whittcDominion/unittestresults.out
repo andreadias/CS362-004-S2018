@@ -1,0 +1,300 @@
+Result for running unit and card tests:
+unittest1.c:
+TESTING scoreFor():
+
+Test player 0 with 1 victory cards.
+curse score = -1, expected = -1
+estates score = 1, expected = 1
+duchys score = 3, expected = 3
+provinces score = 6, expected = 6
+great halls score = 1, expected = 1
+
+Test player 0 with 2 victory cards.
+curse score = -2, expected = -2
+estates score = 2, expected = 2
+duchys score = 6, expected = 6
+provinces score = 12, expected = 12
+great halls score = 2, expected = 2
+
+Test player 0 with 3 victory cards.
+curse score = -3, expected = -3
+estates score = 3, expected = 3
+duchys score = 9, expected = 9
+provinces score = 18, expected = 18
+great halls score = 3, expected = 3
+
+Test player 0 with 4 victory cards.
+curse score = -4, expected = -4
+estates score = 4, expected = 4
+duchys score = 12, expected = 12
+provinces score = 24, expected = 24
+great halls score = 4, expected = 4
+
+Test player 0 with 5 victory cards.
+curse score = -5, expected = -5
+estates score = 5, expected = 5
+duchys score = 15, expected = 15
+provinces score = 30, expected = 30
+great halls score = 5, expected = 5
+
+Test player 1 with 1 victory cards.
+curse score = -1, expected = -1
+estates score = 1, expected = 1
+duchys score = 3, expected = 3
+provinces score = 6, expected = 6
+great halls score = 1, expected = 1
+
+Test player 1 with 2 victory cards.
+curse score = -2, expected = -2
+estates score = 2, expected = 2
+duchys score = 6, expected = 6
+provinces score = 12, expected = 12
+great halls score = 2, expected = 2
+
+Test player 1 with 3 victory cards.
+curse score = -3, expected = -3
+estates score = 3, expected = 3
+duchys score = 9, expected = 9
+provinces score = 18, expected = 18
+great halls score = 3, expected = 3
+
+Test player 1 with 4 victory cards.
+curse score = -4, expected = -4
+estates score = 4, expected = 4
+duchys score = 12, expected = 12
+provinces score = 24, expected = 24
+great halls score = 4, expected = 4
+
+Test player 1 with 5 victory cards.
+curse score = -5, expected = -5
+estates score = 5, expected = 5
+duchys score = 15, expected = 15
+provinces score = 30, expected = 30
+great halls score = 5, expected = 5
+File 'unittest1.c'
+Lines executed:98.08% of 52
+Creating 'unittest1.c.gcov'
+
+unittest2.c:
+TESTING whoseTurn():
+Starting turn: 
+Whose turn is it? Player: 0
+End of Player 0 turn, Who is Next?
+Player: 1
+End of Player 1 turn, Who is Next?
+Player: 0
+End of Player 0 turn, Who is Next?
+Player: 1
+File 'unittest2.c'
+Lines executed:97.14% of 35
+Creating 'unittest2.c.gcov'
+
+unittest3.c:
+Testing getCost(): 
+CURSE cost: 0, expected: 0 
+ESTATE cost: 2, expected: 2 
+DUCHY cost: 5, expected: 5 
+PROVINCE cost: 8, expected: 8 
+COPPER cost: 0, expected: 0 
+SILVER cost: 3, expected: 3 
+GOLD cost: 6, expected: 6 
+ADVENTURER cost: 6, expected: 6 
+COUNCIL ROOM cost: 5, expected: 5 
+FEAST cost: 4, expected: 4 
+GARDENS cost: 4, expected: 4 
+MINE cost: 5, expected: 5 
+REMODEL cost: 4, expected: 4 
+SMITHY cost: 4, expected: 4 
+VILLAGE cost: 3, expected: 3 
+BARON cost: 4, expected: 4 
+GREAT HALL cost: 3, expected: 3 
+MINION cost: 5, expected: 5 
+STEWARD cost: 3, expected: 3 
+TRIBUTE cost: 5, expected: 5 
+REMODEL cost: 4, expected: 4 
+AMBASSADOR cost: 3, expected: 3 
+CUTPURSE cost: 4, expected: 4 
+EMBARGO cost: 2, expected: 2 
+OUTPOST cost: 5, expected: 5 
+SALVAGER cost: 4, expected: 4 
+SEA HAG cost: 4, expected: 4 
+TREASURE MAP cost: 4, expected: 4 
+All tests passed!
+File 'unittest3.c'
+Lines executed:94.20% of 69
+Creating 'unittest3.c.gcov'
+
+unittest4.c:
+TESTING supplyCount() for a 2 player game:
+
+adventurer: 
+Starting number of adventurer cards: 10, expected: 10
+Decrease adventurer supply by one: 9, expected: 9
+Increase adventurer supply by three: 12, expected: 12
+
+council_room: 
+Starting number of council_room cards: 10, expected: 10
+Decrease council_room supply by one: 9, expected: 9
+Increase council_room supply by three: 12, expected: 12
+
+feast: 
+Starting number of feast cards: 10, expected: 10
+Decrease feast supply by one: 9, expected: 9
+Increase feast supply by three: 12, expected: 12
+
+gardens: 
+Starting number of gardens cards: 8, expected: 8
+Decrease gardens supply by one: 7, expected: 7
+Increase gardens supply by three: 10, expected: 10
+
+mine: 
+Starting number of mine cards: 10, expected: 10
+Decrease mine supply by one: 9, expected: 9
+Increase mine supply by three: 12, expected: 12
+
+remodel: 
+Starting number of remodel cards: 10, expected: 10
+Decrease remodel supply by one: 9, expected: 9
+Increase remodel supply by three: 12, expected: 12
+
+smithy: 
+Starting number of smithy cards: 10, expected: 10
+Decrease smithy supply by one: 9, expected: 9
+Increase smithy supply by three: 12, expected: 12
+
+village: 
+Starting number of village cards: 10, expected: 10
+Decrease village supply by one: 9, expected: 9
+Increase village supply by three: 12, expected: 12
+
+baron: 
+Starting number of baron cards: 10, expected: 10
+Decrease baron supply by one: 9, expected: 9
+Increase baron supply by three: 12, expected: 12
+
+great_hall: 
+Starting number of great_hall cards: 8, expected: 8
+Decrease great_hall supply by one: 7, expected: 7
+Increase great_hall supply by three: 10, expected: 10
+
+copper: 
+Starting number of copper cards: 46, expected: 46
+Decrease copper supply by one: 45, expected: 45
+Increase copper supply by three: 48, expected: 48
+
+silver: 
+Starting number of silver cards: 40, expected: 40
+Decrease silver supply by one: 39, expected: 39
+Increase silver supply by three: 42, expected: 42
+
+gold: 
+Starting number of gold cards: 30, expected: 30
+Decrease gold supply by one: 29, expected: 29
+Increase gold supply by three: 32, expected: 32
+
+curse: 
+Starting number of curse cards: 10, expected: 10
+Decrease curse supply by one: 9, expected: 9
+Increase curse supply by three: 12, expected: 12
+
+duchy: 
+Starting number of duchy cards: 8, expected: 8
+Decrease duchy supply by one: 7, expected: 7
+Increase duchy supply by three: 10, expected: 10
+
+province: 
+Starting number of province cards: 8, expected: 8
+Decrease province supply by one: 7, expected: 7
+Increase province supply by three: 10, expected: 10
+File 'unittest4.c'
+Lines executed:96.30% of 27
+Creating 'unittest4.c.gcov'
+
+cardtest1.c:
+--------------------- Testing Card: SMITHY  ----------------------
+------------ SMITHY: Add Three Cards to Hand from Deck -----------
+Cards in Hand = 8, Expected = 8
+Cards in Deck = 2, Expected = 2
+--------------------- Testing Cards in Play --------------------- 
+# of Estate Cards = 8, Expected = 8
+# of Duchy Cards = 8, Expected = 8
+# of Province Cards = 8, Expected = 8
+# of Copper Cards = 46, Expected = 46
+# of Silver Cards = 40, Expected = 40
+# of Gold Cards = 30, Expected = 30
+File 'cardtest1.c'
+Lines executed:97.44% of 39
+Creating 'cardtest1.c.gcov'
+
+cardtest2.c:
+--------------------- Testing Card: GREAT HALL  ----------------------
+------------ GREAT HALL: +1 Card, +1 Action, +1 Victory -----------
+Cards in Hand = 5, Expected = 6
+***Test fails! You did not get the intended result***
+Cards in Deck = 6, Expected = 4
+***Test fails! You did not get the intended result***
+Number of Actions = 2, Expected = 2
+Victory Points = 1, Expected = 2
+***Test fails! You did not get the intended result***
+--------------------- Testing Cards in Play --------------------- 
+# of Estate Cards = 8, Expected = 8
+# of Duchy Cards = 8, Expected = 8
+# of Province Cards = 8, Expected = 8
+# of Copper Cards = 46, Expected = 46
+# of Silver Cards = 40, Expected = 40
+# of Gold Cards = 30, Expected = 30
+File 'cardtest2.c'
+Lines executed:100.00% of 43
+Creating 'cardtest2.c.gcov'
+
+cardtest3.c:
+--------------------- Testing Card: VILLAGE  ----------------------
+------------------- VILLAGE: +1 Card, +2 Action ------------------
+Cards in Hand = 6, Expected = 6
+Cards in Deck = 4, Expected = 4
+Number of Actions = 3, Expected = 3
+Discarded Cards = 1, Expected = 1
+---------------------- Testing Cards in Play ---------------------- 
+# of Estate Cards = 8, Expected = 8
+# of Duchy Cards = 8, Expected = 8
+# of Province Cards = 8, Expected = 8
+# of Copper Cards = 46, Expected = 46
+# of Silver Cards = 40, Expected = 40
+# of Gold Cards = 30, Expected = 30
+File 'cardtest3.c'
+Lines executed:97.67% of 43
+Creating 'cardtest3.c.gcov'
+
+cardtest4.c:
+------------------------- Testing Card: ADVENTURER  --------------------------
+---------- ADVENTURER: Reveal Cards From Deck Until Treasure ----------------
+ ---------------- Is Reached, Discard Revealed Cards -----------------------
+ ------------ BEFORE Adventurer Function Has Been Called -------------------
+Cards in Hand = 5, Expected = 5
+Cards in Deck = 5, Expected = 5
+Number of Actions = 1, Expected = 1
+Discarded Cards = 0, Expected = 0
+---------------------- Testing Cards in Play ---------------------- 
+# of Estate Cards = 8, Expected = 8
+# of Duchy Cards = 8, Expected = 8
+# of Province Cards = 8, Expected = 8
+# of Copper Cards = 46, Expected = 46
+# of Silver Cards = 40, Expected = 40
+# of Gold Cards = 30, Expected = 30
+ ------------ AFTER Adventurer Function Has Been Called -------------------
+Cards in Hand = 7, Expected = 7
+Cards in Deck = 4, Expected = 4
+Number of Actions = 1, Expected = 1
+Discarded Cards = 0, Expected = 3
+***Test fails! You did not get the intended result***
+---------------------- Testing Cards in Play ---------------------- 
+# of Estate Cards = 8, Expected = 8
+# of Duchy Cards = 8, Expected = 8
+# of Province Cards = 8, Expected = 8
+# of Copper Cards = 46, Expected = 46
+# of Silver Cards = 40, Expected = 40
+# of Gold Cards = 30, Expected = 30
+File 'cardtest4.c'
+Lines executed:100.00% of 70
+Creating 'cardtest4.c.gcov'
+

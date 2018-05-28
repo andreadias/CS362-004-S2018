@@ -1,0 +1,88 @@
+        -:    0:Source:unittest4.c
+        -:    0:Graph:unittest4.gcno
+        -:    0:Data:unittest4.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* -----------------------------------------------------------------------
+        -:    2: * Used the testUpdateCoins.c file as a template for this code, as stated 
+        -:    3: * as being allowed in the Assignment 3 Assistance (2) page on Canvas
+        -:    4: * -----------------------------------------------------------------------
+        -:    5: */
+        -:    6:
+        -:    7: // Andrea Dias
+        -:    8:// 4/29/18
+        -:    9:// CS 362-400 Spring 2018
+        -:   10:
+        -:   11:#include "dominion.h"
+        -:   12:#include "dominion_helpers.h"
+        -:   13:#include <string.h>
+        -:   14:#include <stdio.h>
+        -:   15:#include <assert.h>
+        -:   16:#include "rngs.h"
+        -:   17:
+        -:   18:
+       48:   19:void myAssert(int a, int b){
+       48:   20:	if (a != b) {
+    #####:   21:		printf("***Test fails! You did not get the intended result***\n");
+        -:   22:	}
+        -:   23:
+       48:   24:}
+        -:   25:
+        1:   26:int main() {
+        -:   27:
+        1:   28:    int k[17] = {adventurer, council_room, feast, gardens, mine ,remodel, smithy, village, baron, great_hall, copper, silver, gold, curse, duchy, province, estate};
+        1:   29:	char *c[] = {"adventurer", "council_room", "feast", "gardens", "mine", "remodel", "smithy", "village", "baron", "great_hall", "copper", "silver", "gold", "curse", "duchy", "province", "estate"};
+        -:   30:
+        -:   31:    struct gameState state, teststate;
+        1:   32:    int numPlayer2 = 2;  
+        -:   33:    int i;  
+        -:   34: 
+        -:   35:	int state1, state2;
+        -:   36:
+        1:   37: 	initializeGame(numPlayer2, k, 100, &teststate); // initialize a new game
+        1:   38: 	initializeGame(numPlayer2, k, 100, &state);
+        -:   39: 	
+        1:   40: 	printf ("TESTING supplyCount() for a 2 player game:\n");
+        -:   41:
+        -:   42: 	    	
+       17:   43:    for (i = 0; i < 16; i++)
+        -:   44:    {
+        -:   45:
+       16:   46:		state1 = supplyCount(k[i], &teststate);
+       16:   47:		state2 = supplyCount(k[i], &state);		
+        -:   48:	
+       16:   49:	 	printf("\n");
+       16:   50:	 	printf("%s: \n", c[i]);
+       16:   51:		printf("Starting number of %s cards: %d, expected: %d\n", c[i], state1, state2);
+        -:   52:				
+       16:   53:		myAssert(state1, state2);
+        -:   54:		
+       16:   55:		teststate.supplyCount[k[i]]--;
+        -:   56:	
+       16:   57:		printf("Decrease %s supply by one: %d, expected: %d\n", c[i], teststate.supplyCount[k[i]], state.supplyCount[k[i]]-1);
+        -:   58:	
+       16:   59:		myAssert(teststate.supplyCount[k[i]], (state.supplyCount[k[i]]-1));
+        -:   60:		
+       16:   61:		teststate.supplyCount[k[i]]++;
+       16:   62:		teststate.supplyCount[k[i]]++;
+       16:   63:		teststate.supplyCount[k[i]]++;
+        -:   64:	
+       16:   65:		printf("Increase %s supply by three: %d, expected: %d\n", c[i], teststate.supplyCount[k[i]], state.supplyCount[k[i]]+2);
+        -:   66:	
+       16:   67:		myAssert(teststate.supplyCount[k[i]], (state.supplyCount[k[i]]+2));
+        -:   68:	
+        -:   69:		}
+        -:   70:
+        -:   71:
+        -:   72:	
+        1:   73:    return 0;
+        -:   74:}
+        -:   75:
+        -:   76:
+        -:   77:/*
+        -:   78:
+        -:   79:int supplyCount(int card, struct gameState *state) {
+        -:   80:  return state->supplyCount[card];
+        -:   81:}
+        -:   82:*/
+        -:   83:

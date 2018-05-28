@@ -1,0 +1,108 @@
+        -:    0:Source:unittest3.c
+        -:    0:Graph:unittest3.gcno
+        -:    0:Data:unittest3.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:/* -----------------------------------------------------------------------
+        -:    2: * Used the testUpdateCoins.c file as a template for this code, as stated 
+        -:    3: * as being allowed in the Assignment 3 Assistance (2) page on Canvas
+        -:    4: * -----------------------------------------------------------------------
+        -:    5: */
+        -:    6: 
+        -:    7:  // Andrea Dias
+        -:    8:// 4/29/18
+        -:    9:// CS 362-400 Spring 2018
+        -:   10:
+        -:   11:#include "dominion.h"
+        -:   12:#include "dominion_helpers.h"
+        -:   13:#include <string.h>
+        -:   14:#include <stdio.h>
+        -:   15:#include <assert.h>
+        -:   16:#include "rngs.h"
+        -:   17:
+        -:   18:
+    #####:   19:void myAssert(int a, int b){
+    #####:   20:	if (a != b) {
+    #####:   21:		printf("***Test fails! You did not get the intended result***\n");
+        -:   22:	}
+        -:   23:
+    #####:   24:}
+        -:   25:
+        1:   26:int main() {
+        -:   27:
+        1:   28:    int k[10] = {adventurer, council_room, feast, gardens, mine ,remodel, smithy, village, baron, great_hall};
+        -:   29:
+        -:   30:    struct gameState *state, *teststate;
+        -:   31:    struct gameState myGame, myTestGame;
+        1:   32:    state = &myGame;
+        1:   33:    teststate = &myTestGame;
+        -:   34:
+        -:   35:
+        1:   36:    initializeGame(2, k, 40, state);
+        1:   37:    memcpy(teststate, state, sizeof(struct gameState));
+        -:   38:    
+        1:   39:    printf("Testing getCost(): \n");
+        -:   40:        
+        1:   41:    printf("CURSE cost: %d, expected: %d \n", getCost(curse), 0);
+        1:   42:    assert(getCost(curse) == 0);
+        1:   43:	printf("ESTATE cost: %d, expected: %d \n", getCost(estate), 2);
+        1:   44:	assert(getCost(estate) == 2);
+        1:   45:	printf("DUCHY cost: %d, expected: %d \n", getCost(duchy), 5);
+        1:   46:	assert(getCost(duchy) == 5);
+        1:   47:	printf("PROVINCE cost: %d, expected: %d \n", getCost(province), 8);
+        1:   48:	assert(getCost(province) == 8);
+        1:   49:	printf("COPPER cost: %d, expected: %d \n", getCost(copper), 0);
+        1:   50:	assert(getCost(copper) == 0);
+        1:   51:	printf("SILVER cost: %d, expected: %d \n", getCost(silver), 3);
+        1:   52:	assert(getCost(silver) == 3);
+        1:   53:	printf("GOLD cost: %d, expected: %d \n", getCost(gold), 6);
+        1:   54:	assert(getCost(gold) == 6);
+        1:   55:	printf("ADVENTURER cost: %d, expected: %d \n", getCost(adventurer), 6);
+        1:   56:	assert(getCost(adventurer) == 6);
+        1:   57:	printf("COUNCIL ROOM cost: %d, expected: %d \n", getCost(council_room), 5);
+        1:   58:	assert(getCost(council_room) == 5);
+        1:   59:	printf("FEAST cost: %d, expected: %d \n", getCost(feast), 4);
+        1:   60:	assert(getCost(feast) == 4);
+        1:   61:	printf("GARDENS cost: %d, expected: %d \n", getCost(gardens), 4);
+        1:   62:	assert(getCost(gardens) == 4);
+        1:   63:	printf("MINE cost: %d, expected: %d \n", getCost(mine), 5);
+        1:   64:	assert(getCost(mine) == 5);
+        1:   65:	printf("REMODEL cost: %d, expected: %d \n", getCost(remodel), 4);
+        1:   66:	assert(getCost(remodel) == 4);
+        1:   67:	printf("SMITHY cost: %d, expected: %d \n", getCost(smithy), 4);
+        1:   68:	assert(getCost(smithy) == 4);
+        1:   69:	printf("VILLAGE cost: %d, expected: %d \n", getCost(village), 3);
+        1:   70:	assert(getCost(village) == 3);
+        1:   71:	printf("BARON cost: %d, expected: %d \n", getCost(baron), 4);
+        1:   72:	assert(getCost(baron) == 4);
+        1:   73:	printf("GREAT HALL cost: %d, expected: %d \n", getCost(great_hall), 3);
+        1:   74:	assert(getCost(great_hall) == 3);
+        1:   75:	printf("MINION cost: %d, expected: %d \n", getCost(minion), 5);
+        1:   76:	assert(getCost(minion) == 5);
+        1:   77:	printf("STEWARD cost: %d, expected: %d \n", getCost(steward), 3);
+        1:   78:	assert(getCost(steward) == 3);
+        1:   79:	printf("TRIBUTE cost: %d, expected: %d \n", getCost(tribute), 5);
+        1:   80:	assert(getCost(tribute) == 5);
+        1:   81:	printf("REMODEL cost: %d, expected: %d \n", getCost(remodel), 4);
+        1:   82:	assert(getCost(remodel) == 4);
+        1:   83:	printf("AMBASSADOR cost: %d, expected: %d \n", getCost(ambassador), 3);
+        1:   84:	assert(getCost(ambassador) == 3);
+        1:   85:	printf("CUTPURSE cost: %d, expected: %d \n", getCost(cutpurse), 4);
+        1:   86:	assert (getCost(cutpurse) == 4);
+        1:   87:	printf("EMBARGO cost: %d, expected: %d \n", getCost(embargo), 2);
+        1:   88:	assert (getCost(embargo) == 2);
+        1:   89:	printf("OUTPOST cost: %d, expected: %d \n", getCost(outpost), 5);
+        1:   90:	assert(getCost(outpost) == 5);
+        1:   91:	printf("SALVAGER cost: %d, expected: %d \n", getCost(salvager), 4);
+        1:   92:	assert(getCost(salvager) == 4);
+        1:   93:	printf("SEA HAG cost: %d, expected: %d \n", getCost(sea_hag), 4);
+        1:   94:	assert(getCost(sea_hag) == 4);
+        1:   95:	printf("TREASURE MAP cost: %d, expected: %d \n", getCost(treasure_map), 4);
+        1:   96:	assert(getCost(treasure_map) == 4);
+        -:   97:	
+        1:   98:	printf("All tests passed!\n");
+        -:   99:	
+        1:  100:    return 0;
+        -:  101:}
+        -:  102:
+        -:  103:
